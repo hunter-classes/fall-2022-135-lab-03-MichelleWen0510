@@ -1,10 +1,19 @@
-// add your code as appropriate 
-#include <iostream>
+/*
+Author: Michelle Wen
+Course: CSCI-135
+Instructor: Mike Zamansky
+Assignment: Lab 3 Task A
 
+Main function to test and also input.
+*/
+
+#include <iostream>
+#include "reservoir.h"
 int main()
 {
-  
+	get_east_storage("01/09/2018");
+	get_east_storage("05/25/2018");
+	get_east_storage("10/11/2018");
 
-  
-  return 0;
+	return 0;
 }
