@@ -2,9 +2,11 @@
 Author: Michelle Wen
 Course: CSCI-135
 Instructor: Mike Zamansky
-Assignment: Lab 3 Task A
+Assignment: Lab 3 Task A,B,C,D
 
-Function to get gallons using date given.
+get_east_storage Function to get gallons using date given.
+get_min_east Function to get minimum.
+get_max_east Function to get maximum.
 */
 
 #include <iostream>
