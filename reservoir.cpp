@@ -37,3 +37,64 @@ double get_east_storage(std::string date)
 	fin.close();
 	return 0;
 }
+
+double get_min_east()
+{
+	std::ifstream fin("Current_Reservoir_Levels.tsv");
+	std::string junk;
+	getline(fin, junk);
+	
+	std::string date;
+        double eastSt, eastEl, westSt, westEl, previous;
+	int line=0;
+
+        while(fin >> date >> eastSt >> eastEl >> westSt >> westEl) {
+
+        fin.ignore(INT_MAX, '\n');
+        
+	if(line==0)
+	{
+		previous=eastSt;
+		line++;
+	}
+	if(eastSt<previous)
+	{
+		previous=eastSt;
+	}
+        }
+	std::cout << "Minimum "+std::to_string(previous) << std::endl;
+        fin.close();
+
+	return 0;
+}
+
+double get_max_east()
+{
+	std::ifstream fin("Current_Reservoir_Levels.tsv");
+        std::string junk;
+        getline(fin, junk);
+        
+        std::string date;
+        double eastSt, eastEl, westSt, westEl, previous;
+	int line=0;
+        
+        while(fin >> date >> eastSt >> eastEl >> westSt >> westEl) {
+
+        fin.ignore(INT_MAX, '\n');
+        
+	if(line==0)
+        {
+                previous=eastSt;
+                line++;
+        }
+        if(eastSt>previous)
+        {
+                previous=eastSt;
+        }
+        }
+        std::cout << "Maximum "+std::to_string(previous) << std::endl;
+        
+        fin.close();
+	return 0;
+}
+
