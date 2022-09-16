@@ -2,7 +2,7 @@
 Author: Michelle Wen
 Course: CSCI-135
 Instructor: Mike Zamansky
-Assignment: Lab 3 Task A,B,C,D
+Assignment: Lab 3 Task A,B,C
 
 H File for functions.
 */

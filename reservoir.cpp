@@ -2,11 +2,12 @@
 Author: Michelle Wen
 Course: CSCI-135
 Instructor: Mike Zamansky
-Assignment: Lab 3 Task A,B,C,D
+Assignment: Lab 3 Task A,B,C
 
 get_east_storage Function to get gallons using date given.
 get_min_east Function to get minimum.
 get_max_east Function to get maximum.
+compare_basins Which basin is higher.
 */
 
 #include <iostream>
@@ -115,19 +116,11 @@ std::string compare_basins(std::string date)
         fin.ignore(INT_MAX, '\n');
         if(day==date)
         {
-	curEast=eastSt;
-	curWest=westSt;
-		if(curEast>curWest){                
-			std::cout <<"Reservoir Levels "+ std::to_string(curEast)+" "+
-			std::to_string(curWest) << std::endl;
+		if(eastEl>westEl){                
 			return "East";
-       		} else if (curWest>curEast){
-			std::cout <<"Reservoir Levels "+ std::to_string(curEast)+" "+
-                        std::to_string(curWest)  << std::endl;
+       		} else if (westEl>eastEl){
 			return "West";
 		} else {
-			std::cout <<"Reservoir Levels "+std::to_string(curEast)+" "+
-                        std::to_string(curWest)  << std::endl;
 			return "Equal";
 		}
 	}
