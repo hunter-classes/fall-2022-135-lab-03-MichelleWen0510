@@ -33,7 +33,7 @@ double get_east_storage(std::string date)
 	fin.ignore(INT_MAX, '\n');
 	if(day==date)
 	{
-		std::cout << date + " " + std::to_string(eastSt) << std::endl;
+		return eastSt;
 	}
 	}	
 	fin.close();
@@ -64,7 +64,7 @@ double get_min_east()
 		previous=eastSt;
 	}
         }
-	std::cout << "Minimum "+std::to_string(previous) << std::endl;
+	return previous;
         fin.close();
 
 	return 0;
@@ -94,9 +94,44 @@ double get_max_east()
                 previous=eastSt;
         }
         }
-        std::cout << "Maximum "+std::to_string(previous) << std::endl;
+        return previous;
         
         fin.close();
 	return 0;
 }
 
+std::string compare_basins(std::string date)
+{
+        std::ifstream fin("Current_Reservoir_Levels.tsv");
+        std::string junk;
+        getline(fin, junk);
+
+        std::string day;
+        double eastSt, eastEl, westSt, westEl;
+	double curEast, curWest;
+
+        while(fin >> day >> eastSt >> eastEl >> westSt >> westEl) {
+
+        fin.ignore(INT_MAX, '\n');
+        if(day==date)
+        {
+	curEast=eastSt;
+	curWest=westSt;
+		if(curEast>curWest){                
+			std::cout <<"Reservoir Levels "+ std::to_string(curEast)+" "+
+			std::to_string(curWest) << std::endl;
+			return "East";
+       		} else if (curWest>curEast){
+			std::cout <<"Reservoir Levels "+ std::to_string(curEast)+" "+
+                        std::to_string(curWest)  << std::endl;
+			return "West";
+		} else {
+			std::cout <<"Reservoir Levels "+std::to_string(curEast)+" "+
+                        std::to_string(curWest)  << std::endl;
+			return "Equal";
+		}
+	}
+        }
+        fin.close();
+        return "a";
+}
